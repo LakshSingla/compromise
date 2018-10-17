@@ -97,7 +97,17 @@ test('to_number:', function(t) {
     // ['two hundred three hundred', '200 300'], //tricky
     ['sixty fifteen hundred', '60 1500'],
     ['one twenty', '1 20'],
-    ['twenty five twenty', '25 20']
+    ['twenty five twenty', '25 20'],
+    ['seven seven', '7 7'],
+    ['seven seven and a half', '7 7.5'],
+    ['one and a half', '1.5'],
+    ['seven and a half', '7.5'],
+    ['fifty two and a half', '52.5'],
+    ['a half', '0.5'],
+    ['half', '0.5'],
+    ['seven eleven and a half', '7 11.5'],
+    ['seven and a half eleven', '7.5 11'],
+    ['half million and a half', '500000.5'],
   // ['',''],
   // [null,''],
   ].forEach(function(a) {

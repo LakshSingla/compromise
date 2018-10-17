@@ -6,6 +6,8 @@ const parseDecimals = require('./parseDecimals');
 const parseNumeric = require('./parseNumeric');
 const improperFraction = /^([0-9,\. ]+)\/([0-9,\. ]+)$/;
 
+
+
 //some numbers we know
 const casualForms = {
   // 'a few': 3,
@@ -34,12 +36,22 @@ const parse = function(str) {
   if (str === 'a' || str === 'an') {
     return 1;
   }
+	
+	//'a half'/'half' is 0.5
+  if (str === "a half" || str === "half") {
+    return 0.5;
+  }
+
   const modifier = findModifiers(str);
   str = modifier.str;
   let last_mult = null;
   let has = {};
   let sum = 0;
   let isNegative = false;
+	if(/and a? half$/.test(str)){
+		sum += 0.5;
+		str.replace(/and a? half$/, '');
+	}
   const terms = str.split(/[ -]/);
   for (let i = 0; i < terms.length; i++) {
     let w = terms[i];

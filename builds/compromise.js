@@ -3508,6 +3508,13 @@ var parse = function parse(str) {
   var has = {};
   var sum = 0;
   var isNegative = false;
+  if (/^a? half$/.test(str)) {
+    return 0.5;
+  }
+  if (/and a? half$/.test(str)) {
+    sum += 0.5;
+    str.replace(/and a? half$/, '');
+  }
   var terms = str.split(/[ -]/);
   for (var i = 0; i < terms.length; i++) {
     var w = terms[i];

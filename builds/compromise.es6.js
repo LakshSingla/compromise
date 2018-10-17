@@ -3572,6 +3572,7 @@ const parseDecimals = _dereq_('./parseDecimals');
 const parseNumeric = _dereq_('./parseNumeric');
 const improperFraction = /^([0-9,\. ]+)\/([0-9,\. ]+)$/;
 
+
 //some numbers we know
 const casualForms = {
   // 'a few': 3,
@@ -3606,6 +3607,13 @@ const parse = function(str) {
   let has = {};
   let sum = 0;
   let isNegative = false;
+	if(/^a? half$/.test(str)){ 
+		return 0.5; 
+	}
+	if(/and a? half$/.test(str)){
+		sum += 0.5;
+		str.replace(/and a? half$/, '');
+	}
   const terms = str.split(/[ -]/);
   for (let i = 0; i < terms.length; i++) {
     let w = terms[i];
