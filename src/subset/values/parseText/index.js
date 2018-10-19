@@ -37,10 +37,10 @@ const parse = function(str) {
     return 1;
   }
 	
-	//'a half'/'half' is 0.5
+  /*//'a half'/'half' is 0.5
   if (str === "a half" || str === "half") {
     return 0.5;
-  }
+  }*/
 
   const modifier = findModifiers(str);
   str = modifier.str;
